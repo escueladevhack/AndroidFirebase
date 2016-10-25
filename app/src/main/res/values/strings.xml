@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">barnet</string>
+    <string name="chat_mensaje">Mensaje</string>
+    <string name="chat_btn_enviar">Enviar</string>
+    <string name="login.iniciar">Iniciar</string>
+    <string name="login.email">E-mail</string>
+    <string name="login.password">Password</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="login.iniciar.facebook">Facebook</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="btn_register">Crear Cuenta</string>
+    <string name="register_name">Nombre</string>
+    <string name="register_email">E-mail</string>
+    <string name="register_password">Contraseña</string>
+    <string name="loading">Loading...</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login_SignUp">SignUp</string>
+    <string name="welcome">Bienvenido - Cuenta creada correctamente</string>
+    <string name="error_auth">Error creando la cuenta</string>
+
+</resources>

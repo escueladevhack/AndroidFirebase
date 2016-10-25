@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "60396479597",
+    "firebase_url": "https://barnet-6749d.firebaseio.com",
+    "project_id": "barnet-6749d",
+    "storage_bucket": "barnet-6749d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:60396479597:android:cc00354397f0300a",
+        "android_client_info": {
+          "package_name": "co.barnetapp.barnet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "60396479597-7vtd6gc2kpvv3ib2k4hvtkdm3j4mv54t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "co.barnetapp.barnet",
+            "certificate_hash": "B167B863705A50EC562A3ACA34A4C04E3BB7820A"
+          }
+        },
+        {
+          "client_id": "60396479597-nqa6noc24nterdt367hj67nmdqegrjda.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9vbg_6dJe5SCFT2Xtd8tuljULxGJi95Y"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "60396479597-nqa6noc24nterdt367hj67nmdqegrjda.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
