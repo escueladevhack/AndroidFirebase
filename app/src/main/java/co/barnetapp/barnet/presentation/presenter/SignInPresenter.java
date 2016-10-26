@@ -1,7 +1,6 @@
 package co.barnetapp.barnet.presentation.presenter;
 
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -27,19 +26,18 @@ public class SignInPresenter implements ISignInPresenter {
     public void signIn(String email, String password) {
         signInView.showLoading();
 
-        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    Log.i("SignInPresenter", task.getResult().getUser().getEmail());
-                    signInView.showAuthSuccesful();
-                    //TODO: Ir al activity HOME
-                } else {
-                    signInView.showAuthError(task.getException());
-                }
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            signInView.showAuthSuccesful();
 
-            }
-        });
+                        } else {
+                            signInView.showAuthError(task.getException());
+                        }
+                    }
+                });
 
         signInView.hideLoading();
     }

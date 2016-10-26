@@ -16,7 +16,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="login_SignUp">SignUp</string>
+    <string name="login_SignUp">Registrate!!</string>
     <string name="welcome">Bienvenido - Cuenta creada correctamente</string>
     <string name="error_auth">Error creando la cuenta</string>
 

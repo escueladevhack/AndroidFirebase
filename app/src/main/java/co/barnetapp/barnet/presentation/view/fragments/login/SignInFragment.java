@@ -102,6 +102,7 @@ public class SignInFragment extends Fragment implements ISignInView {
     @Override
     public void showAuthSuccesful() {
         Toast.makeText(getContext(), getResources().getString(R.string.welcome), Toast.LENGTH_SHORT).show();
+        mListener.goToChatRoom();
     }
 
     @Override
@@ -112,6 +113,7 @@ public class SignInFragment extends Fragment implements ISignInView {
     public interface OnSignInFragmentListener {
 
         void goToSignUp();
+        void goToChatRoom();
 
     }
 }

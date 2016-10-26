@@ -1,5 +1,6 @@
 package co.barnetapp.barnet.presentation.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -30,9 +31,14 @@ public class LoginActivity extends AppCompatActivity
         fragmentTransaction.commit();
     }
 
-
     @Override
     public void goToSignUp() {
         setFragment(SignUpFragment.newInstance());
+    }
+
+    @Override
+    public void goToChatRoom() {
+        Intent intent = new Intent(this, ChatRoomsActivity.class);
+        startActivity(intent);
     }
 }

@@ -26,17 +26,17 @@ public class SignUpPresenter implements ISignUpPresenter {
     public void signUp(String name, String email, String password) {
         registerView.showLoading();
 
-        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    registerView.showAuthMessage();
-                    //TODO: actividad Home
-                } else {
-                    registerView.showErrorAuthMessage(task.getException());
-                }
-            }
-        });
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            registerView.goHome();
+                        } else {
+                                registerView.showErrorAuthMessage(task.getException());
+                        }
+                    }
+                });
 
 
         registerView.hideLoading();

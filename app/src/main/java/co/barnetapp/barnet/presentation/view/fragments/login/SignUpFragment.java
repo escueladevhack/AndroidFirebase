@@ -101,7 +101,7 @@ public class SignUpFragment extends Fragment implements ISignUpView {
 
     @Override
     public void goHome() {
-
+        mListener.goToChatRoom();
     }
 
     @Override
@@ -125,7 +125,7 @@ public class SignUpFragment extends Fragment implements ISignUpView {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnSignUpFragmentListener {
-
+        void goToChatRoom();
 
     }
 }
