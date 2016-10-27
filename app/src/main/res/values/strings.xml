@@ -19,5 +19,7 @@
     <string name="login_SignUp">Registrate!!</string>
     <string name="welcome">Bienvenido - Cuenta creada correctamente</string>
     <string name="error_auth">Error creando la cuenta</string>
+    <string name="title_activity_publicidad">PublicidadActivity</string>
+    <string name="chat_btn_invite">Invita a tus amigos</string>
 
 </resources>

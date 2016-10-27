@@ -20,7 +20,7 @@
 
             <ListView
                 android:layout_width="match_parent"
-                android:layout_height="430dp"
+                android:layout_height="380dp"
                 android:id="@+id/chat_room"
                 android:divider="@color/colorPrimary"/>
             
@@ -29,29 +29,49 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="bottom|center"
-            android:weightSum="1">
+            android:orientation="vertical"
+            android:layout_gravity="bottom|center">
 
-            <EditText
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/chat_mensaje"
-                android:inputType="text"
-                android:layout_weight="0.9"
-                android:id="@+id/chat_room_mensaje"/>
+                android:orientation="horizontal"
+                android:layout_gravity="bottom|center"
+                android:weightSum="1">
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/chat_mensaje"
+                    android:inputType="text"
+                    android:layout_weight="0.9"
+                    android:id="@+id/chat_room_mensaje"/>
+
+                <Button
+                    android:id="@+id/btnEnviar"
+                    android:layout_weight="0.1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:text="@string/chat_btn_enviar"
+                    android:textColor="@color/blanco"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
 
             <Button
-                android:id="@+id/btnEnviar"
-                android:layout_weight="0.1"
-                android:layout_width="wrap_content"
+                android:id="@+id/btnInvite"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
-                android:text="@string/chat_btn_enviar"
+                android:background="@color/com_facebook_likeboxcountview_text_color"
+                android:text="@string/chat_btn_invite"
                 android:textColor="@color/blanco"
                 android:textStyle="bold"/>
 
+
         </LinearLayout>
+
+
 
     </FrameLayout>
 

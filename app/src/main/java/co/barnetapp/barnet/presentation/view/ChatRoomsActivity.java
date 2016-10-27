@@ -1,11 +1,14 @@
 package co.barnetapp.barnet.presentation.view;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.google.android.gms.appinvite.AppInviteInvitation;
 import com.google.firebase.crash.FirebaseCrash;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -27,8 +30,9 @@ import co.barnetapp.barnet.R;
 public class ChatRoomsActivity extends AppCompatActivity implements ChildEventListener {
 
     private ArrayAdapter<String> arrayAdapter;
-    private DatabaseReference dbReference;
     private List<String> mensajes;
+    private DatabaseReference reference;
+
 
     @Bind(R.id.chat_room)
     ListView lstChatRoom;
@@ -49,10 +53,23 @@ public class ChatRoomsActivity extends AppCompatActivity implements ChildEventLi
 
         lstChatRoom.setAdapter(arrayAdapter);
 
-        dbReference =
-                FirebaseDatabase.getInstance().getReference().child("questions");
+        reference = FirebaseDatabase.getInstance().getReference().child("questions");
 
-        dbReference.addChildEventListener(this);
+        reference.addChildEventListener(this);
+
+    }
+
+    @OnClick(R.id.btnInvite)
+    public void clickInvite(){
+
+        Intent intent = new AppInviteInvitation.IntentBuilder(
+                "Invita a tus amigos a preguntar")
+                .setDeepLink(Uri.parse("http;//devhack.co"))
+                .setMessage("Invita a otros")
+                .build();
+
+        startActivityForResult(intent, 1);
+
     }
 
     @OnClick(R.id.btnEnviar)
@@ -61,17 +78,16 @@ public class ChatRoomsActivity extends AppCompatActivity implements ChildEventLi
         try {
 
             // Crear un mensaje, y push a firebase
-            Mensaje objMensaje = new Mensaje(FirebaseHelper.getInstance().getAuthUserEmail(),
-                    String.valueOf(Calendar.getInstance().getTimeInMillis()), "",
-                    String.valueOf(txtChatMensaje.getText()));
+            Mensaje mensaje = new Mensaje(FirebaseHelper.getInstance().getAuthUserEmail(),
+                    String.valueOf(Calendar.getInstance().getTimeInMillis()),
+                    "",
+                    txtChatMensaje.getText().toString());
 
-            dbReference.push().setValue(objMensaje);
-
-            FirebaseCrash.log("Pregunta enviada => "+objMensaje.getPregunta());
+            reference.push().setValue(mensaje);
 
             txtChatMensaje.setText("");
-        } catch (Exception e) {
-            FirebaseCrash.report(e);
+        } catch (Exception e) {FirebaseCrash.report(e);
+
         }
     }
 
@@ -79,6 +95,7 @@ public class ChatRoomsActivity extends AppCompatActivity implements ChildEventLi
     public void onChildAdded(DataSnapshot dataSnapshot, String s) {
         // Convertir el datasnap a Mensaje y adicionar al arrayadapter
         Mensaje mensaje = dataSnapshot.getValue(Mensaje.class);
+
         arrayAdapter.add(mensaje.getPregunta());
         arrayAdapter.notifyDataSetChanged();
     }
