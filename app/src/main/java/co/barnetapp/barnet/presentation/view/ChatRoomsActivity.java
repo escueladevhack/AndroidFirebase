@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.google.android.gms.appinvite.AppInviteInvitation;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.crash.FirebaseCrash;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -32,7 +33,7 @@ public class ChatRoomsActivity extends AppCompatActivity implements ChildEventLi
     private ArrayAdapter<String> arrayAdapter;
     private List<String> mensajes;
     private DatabaseReference reference;
-
+    private FirebaseAnalytics firebaseAnalytics;
 
     @Bind(R.id.chat_room)
     ListView lstChatRoom;
@@ -57,15 +58,27 @@ public class ChatRoomsActivity extends AppCompatActivity implements ChildEventLi
 
         reference.addChildEventListener(this);
 
+        firebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
     }
 
     @OnClick(R.id.btnInvite)
-    public void clickInvite(){
+    public void clickInvite() {
 
-        Intent intent = new AppInviteInvitation.IntentBuilder(
-                "Invita a tus amigos a preguntar")
-                .setDeepLink(Uri.parse("http;//devhack.co"))
-                .setMessage("Invita a otros")
+        Bundle datos = new Bundle();
+        datos.putString(FirebaseAnalytics.Param.GROUP_ID, "invites");
+        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SHARE, datos);
+
+        Bundle datosCompra = new Bundle();
+        datos.putString(FirebaseAnalytics.Param.VALUE, "50000");
+        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.ECOMMERCE_PURCHASE, datosCompra);
+
+        firebaseAnalytics.setUserProperty("favoritacomida", "Frijoles");
+
+        // Se crea intente para que se abra la actividad para invitar a otras personas a la app
+        Intent intent = new AppInviteInvitation.IntentBuilder("Invitación al chat")
+                .setMessage("Empieza a chatear con tus amigos")
+                .setDeepLink(Uri.parse("http://devhack.co"))
                 .build();
 
         startActivityForResult(intent, 1);
@@ -86,8 +99,9 @@ public class ChatRoomsActivity extends AppCompatActivity implements ChildEventLi
             reference.push().setValue(mensaje);
 
             txtChatMensaje.setText("");
-        } catch (Exception e) {FirebaseCrash.report(e);
 
+        } catch (Exception e) {
+            FirebaseCrash.report(e);
         }
     }
 

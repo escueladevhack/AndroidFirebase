@@ -23,6 +23,7 @@
             android:name=".presentation.view.activities.PublicidadActivity"
             android:label="@string/title_activity_publicidad"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        
     </application>
 
 </manifest>

@@ -4,4 +4,8 @@
         <key>mostrarPublicidad</key>
         <value>true</value>
     </entry>
+    <entry>
+        <key>NumMensajesFree</key>
+        <value>4</value>
+    </entry>
 </defaultsPublicidad>

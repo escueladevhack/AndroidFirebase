@@ -26,6 +26,7 @@ public class SignInPresenter implements ISignInPresenter {
     public void signIn(String email, String password) {
         signInView.showLoading();
 
+
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
